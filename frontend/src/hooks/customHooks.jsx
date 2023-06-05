@@ -15,11 +15,12 @@ export const useGetTodos = () => {
 
 export const useCreateTodo = () => {
   const queryClient = useQueryClient();
+ 
 
-  return useMutation((newTodo) => fetch(baseURL, {
+  return useMutation((newTodoItem) => fetch(baseURL, {
     method: 'POST',
     headers,
-    body: JSON.stringify(newTodo),
+    body: JSON.stringify(newTodoItem),
   }), {
     onSuccess: () => {
       queryClient.invalidateQueries('todos');
@@ -31,7 +32,7 @@ export const useCreateTodo = () => {
 export const useUpdateTodo = () => {
   const queryClient = useQueryClient();
 
-  return useMutation((updatedTodo) => fetch(`${baseURL}/${updatedTodo.id}`, {
+  return useMutation((updatedTodo) => fetch(`${baseURL}/${updatedTodo._id}`, {
     method: 'PUT',
     headers,
     body: JSON.stringify(updatedTodo),

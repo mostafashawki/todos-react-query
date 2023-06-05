@@ -1,35 +1,45 @@
 import { useState } from 'react';
-import { useCreateTodo } from './hooks/useCrudHooks';
+import { useCreateTodo } from './hooks/customHooks';
 
 const Form = () => {
-  const [newItemName, setNewItemName] = useState('');
+  const [newTodo, setNewTodo] = useState('');
 
-  const { isLoading, createTask } = useCreateTodo();
+    // Create a new todo
+    const createTodoMutation = useCreateTodo();
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   createTask(newItemName, {
-  //     onSuccess: () => {
-  //       setNewItemName('');
-  //     },
-  //   });
-  // };
+    const handleCreateTodo = async (e) => {
+      e.preventDefault();
+      const todoItem = {
+        todo: newTodo,
+        completed: false,
+        userId: 26
+      };
+  
+      try {
+        await createTodoMutation.mutateAsync(todoItem);
+        setNewTodo('');
+      } catch (error) {
+        console.error('Failed to create todo:', error);
+      }
+    };
+
+ 
   return (
-    // <form onSubmit={handleSubmit}>
-    //   <h4>task bud</h4>
-    //   <div className='form-control'>
-    //     <input
-    //       type='text '
-    //       className='form-input'
-    //       value={newItemName}
-    //       onChange={(event) => setNewItemName(event.target.value)}
-    //     />
-    //     <button type='submit' className='btn' disabled={isLoading}>
-    //       add task
-    //     </button>
-    //   </div>
-    // </form>
-    <div>hi from form</div>
+    <form onSubmit={handleCreateTodo}>
+      <h4>New Todo</h4>
+      <div className='form-control'>
+        <input
+          type='text '
+          className='form-input'
+          value={newTodo}
+          onChange={(event) => setNewTodo(event.target.value)}
+        />
+        <button type='submit' className='btn' >
+          add task
+        </button>
+      </div>
+    </form>
+  
   );
 };
 export default Form;

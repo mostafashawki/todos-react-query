@@ -8,7 +8,6 @@ const App = () => {
       <ToastContainer position='top-center' />
       <Form />
       <TodoList />
-      hi
     </section>
   );
 };
