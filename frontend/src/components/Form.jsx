@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { useCreateTodo } from './hooks/customHooks';
+import { useCreateTodo } from '../hooks/customHooks';
+import { toast } from 'react-toastify';
 
 const Form = () => {
   const [newTodo, setNewTodo] = useState('');
@@ -9,6 +10,10 @@ const Form = () => {
 
     const handleCreateTodo = async (e) => {
       e.preventDefault();
+      if (!newTodo) {
+        toast.error('please provide value');
+        return;
+      }
       const todoItem = {
         todo: newTodo,
         completed: false,

@@ -1,6 +1,6 @@
 import React from 'react';
-import { useGetTodos } from './hooks/customHooks';
-import Item from './Item'
+import { useGetTodos } from '../hooks/customHooks';
+import Item from './TodoItem'
 
 function TodoList() {
   // Fetch all todos

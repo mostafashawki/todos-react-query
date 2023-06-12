@@ -1,15 +1,21 @@
-import express from 'express';
-import cors from 'cors';
-import mongoose from 'mongoose';
+// import express from 'express';
+// import cors from 'cors';
+// import mongoose from 'mongoose';
+const express = require('express');
+const cors = require('cors');
+const mongoose = require('mongoose');
+
+//1- initialize the server
 const app = express();
 const port = 3000;
 app.use(cors());
 app.use(express.json());
 
-// Connect to MongoDB
+// 2- Connect to MongoDB
 //use `mongodb://mongo:27017/todos` when you want to connect from inside Docker
 // and use `mongodb://127.0.0.1:27017/todos` when you want to connect from outside Docker
-mongoose.connect('mongodb://mongo:27017/todos', { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect('mongodb://127.0.0.1:27017/todos', { useNewUrlParser: true, useUnifiedTopology: true })
+// mongoose.connect('mongodb://mongo:27017/todos', { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('Connected to MongoDB'))
   .catch(err => console.error('Failed to connect to MongoDB', err));
 
@@ -104,3 +110,7 @@ app.delete('/api/todos/:id', async (req, res) => {
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`);
 });
+
+
+//need to export it to use it inside tests
+module.exports = app;

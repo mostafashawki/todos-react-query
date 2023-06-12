@@ -1,4 +1,5 @@
 import { useQuery, useMutation, useQueryClient } from 'react-query';
+import { toast } from 'react-toastify';
 const baseURL = 'http://localhost:3000/api/todos'
 const headers = {
     'Content-Type': 'application/json',
@@ -24,6 +25,10 @@ export const useCreateTodo = () => {
   }), {
     onSuccess: () => {
       queryClient.invalidateQueries('todos');
+      toast.success('task added successfuly!');
+    },
+    onError: (error) => {
+      toast.error(error.response.data.msg);
     },
   });
 };
@@ -39,6 +44,10 @@ export const useUpdateTodo = () => {
   }), {
     onSuccess: () => {
       queryClient.invalidateQueries('todos');
+      toast.success('task updated successfuly!');
+    },
+    onError: (error) => {
+      toast.error(error.response.data.msg);
     },
   });
 };
@@ -52,6 +61,10 @@ export const useDeleteTodo = () => {
   }), {
     onSuccess: () => {
       queryClient.invalidateQueries('todos');
+      toast.success('task removed!');
+    },
+    onError: (error) => {
+      toast.error(error.response.data.msg);
     },
   });
 };

@@ -1,4 +1,4 @@
-import { useUpdateTodo, useDeleteTodo } from './hooks/customHooks';
+import { useUpdateTodo, useDeleteTodo } from '../hooks/customHooks';
 
 
 const Item = ({ item }) => {
@@ -48,7 +48,7 @@ const Item = ({ item }) => {
       >
         delete
       </button>
-      <pre>{item._id}</pre>
+      
     </div>
   );
 };

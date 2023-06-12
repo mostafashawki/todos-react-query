@@ -1,6 +1,6 @@
 import { ToastContainer } from 'react-toastify';
-import Form from './Form';
-import TodoList from './TodoList';
+import Form from './components/Form';
+import TodoList from './components/TodoList';
 
 const App = () => {
   return (
