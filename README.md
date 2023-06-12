@@ -1,6 +1,6 @@
 # Todo Application
 
-This is a small todo application built using ReactJS, Styled-components, React-query, Node.js, and Express. The application allows users to manage their todo tasks efficiently.
+This is a small todo application built using ReactJS with Vite, Styled-components, React-query, Node.js, and Express. The application allows users to manage their todo tasks efficiently.
 
 ## Features
 
@@ -62,7 +62,7 @@ If you choose to run the application natively, follow these steps:
 
 ## Usage
 
-Once the application is up and running, you can access it by opening a web browser and navigating to `http://localhost:3000`. You will be presented with the todo application interface.
+Once the application is up and running, you can access it by opening a web browser and navigating to `http://localhost:5173`. You will be presented with the todo application interface.
 
 - To create a new todo task, enter the task details in the input field and press Enter or click the "Add" button.
 - To mark a task as complete, click the checkbox next to it.
